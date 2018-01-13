@@ -170,12 +170,11 @@ class SP_FacebookFeed extends WP_Widget
 	 */
 	public function form( $instance )
 	{
-		$french_enabled = ( sp_french_enabled( ) ) ? true : false;
 		$template = array(
-			"languages" => ( $french_enabled ) ? array( "en", "fr" ) : array( "en" ),
+			"languages" => array( "en", "fr" ),
 			"class" => $this,
 			"instance" => $instance,
-			'french_enabled'	=> $french_enabled
+			'french_enabled' => true
 		);
 		echo $this->TWIG->render('widget.facebook.form.twig.html',$template);
 	}

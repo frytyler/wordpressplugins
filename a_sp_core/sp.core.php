@@ -18,8 +18,20 @@ define( "SP_CORE_DIR", plugin_dir_path( __FILE__ ) );
 /**
  *	COMMON FUNCTIONS
  */
-function sp_french_enabled() { global $q_config; if ($q_config['language']) { return true; } return false; }
-function sp_translate($en=NULL,$fr=NULL) { global $q_config; $text = $en; if ("fr" == $q_config["language"]) { $text = $fr; } return $text; }
+function sp_french_enabled() { 
+	global $q_config; 
+	if ($q_config['language']) { 
+		return true; 
+	} 
+	return false; 
+}
+function sp_translate($en=NULL,$fr=NULL) {
+	if(function_exists('pll_current_language')) {
+		if ("fr" == pll_current_language()) return $fr;
+		return $en; 	
+	} 
+	
+}
 function sp_clean_post( $p ) { $p = strip_tags($p); $p = stripslashes($p); $p = trim($p); return $p; }
 function sp_save_postdata($post_id, $n, $v) { if('' == trim($v) || '0' == trim($v)) { delete_post_meta($post_id, $n); } else { update_post_meta($post_id, $n, $v); } }
 function main_excerpt($content) { $content = str_replace("[...]", "...", $content); return $content; }
@@ -127,6 +139,7 @@ class SP_BLOCK {
 	 *	@return 	<void>
 	 */
 	public function draw_block($title,$version=NULL,$description=NULL,$footer=NULL){
+		print_r(sp_translate('s', 'r'));
 		?>
 		<div class="wrap">
        		<div class="sp_block">
