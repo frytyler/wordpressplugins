@@ -188,7 +188,7 @@ class SP_FacebookFeed extends WP_Widget
 	public function update( $new_instance, $old_instance )
 	{
 		$instance = array( );
-		$languages = ( sp_french_enabled() ) ? array( "en", "fr" ) : array( "en" );
+		$languages = array( "en", "fr" );
 		foreach ( $languages as $lang )
 		{
 			$instance[$lang]["caption"] = $new_instance["widget_caption_".$lang];
