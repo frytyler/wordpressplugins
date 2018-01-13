@@ -1,0 +1,42 @@
+{{ before | raw }}
+<header>
+{{ before_title | raw }}
+{{ title | raw }}
+{{ after_title | raw }}
+</header>
+<article class="content tweets">
+{% if tweets is not empty %}
+{% for tweet in tweets %}
+	<div class="tweet clearfix">
+		<img src="{{ tweet.user_avatar }}" class="avatar" />
+		<div class="msg">
+			<header>
+				<a href="http://twitter.com/{{ tweet.user_screenname }}" target="_blank" class="user" data-ga-cat="twitter" data-ga-action="username" data-ga-label="{{ tweet.user_screenname }}">{{ tweet.user_name }}</a>
+				<a href="http://twitter.com/{{ tweet.user_screenname }}" target="_blank" class="username"
+					data-ga-cat="twitter" data-ga-action="username" data-ga-label="{{ tweet.user_screenname }}">
+					&#64;{{ tweet.user_screenname }}
+				</a>
+			</header>
+			<article>
+				<p>{{ tweet.tweet_text | raw }}</p>
+				<div class="inner_container">
+					<div class="col_1of2">
+						<a class="date" href="{{ tweet.tweet_url }}" target="_blank" data-ga-cat="twitter" data-ga-action="time" data-ga-label="{{ tweet.tweet_created_at }}">
+							{{ tweet.tweet_created_at }}
+						</a>
+					</div>
+					<div class="col_1of2 align-right">
+						<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+						<a href="https://twitter.com/intent/tweet?in_reply_to={{ tweet.tweet_id_str }}" data-ga-cat="twitter" data-ga-action="reply" data-ga-label="https://twitter.com/intent/tweet?in_reply_to={{ tweet.tweet_id_str }}" class="sp-icon sp-icon-twitter-reply" title="Reply"></a>
+                        <a href="https://twitter.com/intent/retweet?tweet_id={{ tweet.tweet_id_str }}" data-ga-cat="twitter" data-ga-action="retweet" data-ga-label="https://twitter.com/intent/retweet?tweet_id={{ tweet.tweet_id_str }}" class="sp-icon sp-icon-twitter-retweet" title="Retweet"></a>
+                        <a href="https://twitter.com/intent/favorite?tweet_id={{ tweet.tweet_id_str }}" data-ga-cat="twitter" data-ga-action="favorite" data-ga-label="https://twitter.com/intent/favorite?tweet_id={{ tweet.tweet_id_str }}" class="sp-icon sp-icon-twitter-favorite" title="Favourite"></a>
+	                    <a href="https://twitter.com/intent/follow?screen_name={{ tweet.user_screenname }}" data-ga-cat="twitter" data-ga-action="follow" data-ga-label="https://twitter.com/intent/follow?screen_name={{ tweet.user_screenname }}" class="sp-icon sp-icon-twitter-follow" title="Follow"></a>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+{% endfor %}
+{% endif %}
+</article>
+{{ after | raw }}

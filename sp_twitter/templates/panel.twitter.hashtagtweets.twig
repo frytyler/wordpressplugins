@@ -1,0 +1,37 @@
+{{ msg|raw }}
+<table class="table table-striped" border="0" cellspacing="0" cellpadding="0">
+	<thead>
+		<tr>
+			<th width="180">User Name</th>
+			<th>Tweet</th>
+			<th width="100">Is French?</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for tweet in tweets %}
+		<tr>
+			<td><img src="{{ tweet.user_avatar }}" style="max-width:30px;" /> &nbsp;&nbsp; {{ tweet.user_name }}</td>
+			<td>{{ tweet.tweet_text|raw }}</td>
+			<td>{{ tweet.isFr == 1 ? 'Yes' : 'No' }}</td>
+			<td>
+				{% if tweet.isDeleted == 1 %}
+					<form action="" method="post">
+						<input type="hidden" name="{{ hidden_field_name_restore }}" value="1"> 
+						<input type="hidden" name="tweet_id" value="{{ tweet.id }}">
+						{# <a class="button button-secondary">Delete</a> #}
+						<button type="submit" class="button button-primary">Restore</button>
+					</form>
+				{% else %}
+					<form action="" method="post">
+						<input type="hidden" name="{{ hidden_field_name }}" value="1"> 
+						<input type="hidden" name="tweet_id" value="{{ tweet.id }}">
+						{# <a class="button button-secondary">Delete</a> #}
+						<button type="submit" class="button button-secondary">Delete</button>
+					</form>
+				{% endif %}
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>

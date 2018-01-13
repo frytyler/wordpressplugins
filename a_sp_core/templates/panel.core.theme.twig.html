@@ -1,0 +1,7 @@
+{{ msg | raw }}
+<form method="post">
+	<input type="hidden" name="{{ hidden_field_name }}" value="1" />
+	<label for="q8_theme">Enter Theme Name:</label>
+	<input type="text" name="q8_theme" id="q8_theme" class="widefat" value="{{ setting.theme_name }}" />
+	<button type="submit" class="button button-primary">Save</button>
+</form>

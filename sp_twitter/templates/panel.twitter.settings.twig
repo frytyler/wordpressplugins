@@ -1,0 +1,58 @@
+{{ msg | raw }}
+<div class="blurb">
+    <p>Twice daily, this plugin checks the Twitter account name(<i>s</i>) you've entered below. You have the option of forcing an update by clicking on the <b>GET LATEST TWEETS</b> button.  <a href="widgets.php">Click here</a> to drag and drop the <b>(SP) Twitter</b> widget in the sidebar.</p>
+    <p><b>WARNING:</b> Do not overdue clicking on that button as too many imports per hour may result in a temporary block from Twitter's servers.</p>
+    <div class="form-group">
+        <form action="" method="post">
+            <input type="hidden" name="{{ hidden_field_name }}" value="1" />
+            <input type="submit" name="Submit" value="GET LATEST TWEETS" class="button button-primary" />
+        </form>
+    </div>
+</div>
+<div><p>&nbsp;</p></div>
+<h3>Twitter Application Settings and User Account Information</h3>
+<br>
+<ol>
+    <li>Go here <a href="https://apps.twitter.com/app/new" target="_blank">https://apps.twitter.com/app/new</a></li>
+    <li>Enter Appropriate information to create an app.</li>
+    <li>Change to "Key and Access Tokens" tab</li>
+    <li>Copy Consumer key and secret</li>
+</ol>
+<br>
+<form action="" method="post">
+    <input type="hidden" name="{{ hidden_field_name2 }}" value="1" />
+    <div class="inner_container">
+        <div class="col_1of2">
+            <label for="consumer_key">Enter the Twitter Consumer Key</label>
+            <input type="password" name="consumer_key" id="consumer_key" value="{{ setting.consumer_key }}" maxlength="64" class="widefat" />
+        </div>
+        <div class="col_1of2">
+            <label for="consumer_secret">Enter the Twitter Consumer Secret</label>
+            <input type="password" name="consumer_secret" id="consumer_secret" value="{{ setting.consumer_secret }}" maxlength="64" class="widefat" />
+        </div>
+        <div><p>&nbsp;</p></div>
+        <div class="col_1of2">
+            <label for="username_en">Enter the Twitter account name (EN)</label>
+            <input type="text" name="username_en" id="username_en" value="{{ setting.username_en }}" maxlength="64" class="widefat" />
+        </div>
+        <div class="col_1of2">
+            <label for="username_fr">Enter the Twitter account name (FR)</label>
+            <input type="text" name="username_fr" id="username_fr" value="{{ setting.username_fr }}" maxlength="64" class="widefat" />
+        </div>
+        <div class="col_1of1">
+            <hr>
+            <p><strong>Note:</strong> If a hashtag is entered it will be used over the Twitter account.</p>
+        </div>
+        <div class="col_1of2">
+            <label for="hashtag_en">Enter hashtag (EN)</label>
+            <input type="text" name="hashtag_en" id="hashtag_en" value="{{ setting.hashtag_en }}" maxlength="64" class="widefat" />
+        </div>
+        <div class="col_1of2">
+            <label for="hashtag_fr">Enter hashtag (FR)</label>
+            <input type="text" name="hashtag_fr" id="hashtag_fr" value="{{ setting.hashtag_fr }}" maxlength="64" class="widefat" />
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" name="Submit" value="Update" class="button button-primary" />
+    </div>
+</form>

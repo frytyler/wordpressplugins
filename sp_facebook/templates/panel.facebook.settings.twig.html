@@ -1,0 +1,48 @@
+<div class="sp_facebookfeed-panel">
+	{{ msg | raw }}
+    {# <div class="form-group">
+        <p>To set up your <strong>Facebook Feed</strong> widget, follow these steps:</p>
+        <ol>
+            <li>Enter the username of the Facebook page.</li>
+            <li>Attain an App ID and Secret Key and copy and paste those in the appropriate fields below. You can do so by going to your <a href="https://developers.facebook.com/apps" target="_blank" >Facebook Developer Apps page</a>. Additional info can be found <a href="http://help.yahoo.com/l/us/yahoo/smallbusiness/store/edit/social/social-06.html" target="_blank" rel="nofollow">here</a>.</li>
+            <li>Save those settings by clicking on the "Update Facebook Account" button.</li>
+            <li>Go to your <a href='widgets.php'>Widgets section</a> and drag and drop the <strong>Facebook Feed</strong> widget into your sidebar.</li>
+        </ol>
+    </div>
+    <hr /> #}
+    <div class="form-group">
+        <p>Twice daily, this plugin checks the Facebook Page account you've entered below. You have the option of forcing an update by clicking on the following button.</p>
+        <p>Do not overdue clicking on that button as too many imports per hour may result in a temporary block from Facebook's servers. </p>
+        <form action="" method="post">
+            <input type="hidden" name="{{ hidden_field_name }}" value="1" />
+            <input type="submit" name="Submit" value="GET LATEST FACEBOOK POSTS" class="button button-primary" />
+        </form>
+    </div>
+    <hr />
+    <div class="form-group"><strong>If App ID and Secret Key change please contact a Web Adminstrator.</strong></div>
+    <div class="form-group">
+        <form action="" method="post">
+            <input type="hidden" name="{{ hidden_field_name2 }}" value="1" />
+
+            <div class="inner_container">
+                <div class="col_1of3">
+                    <label for="pageid">Facebook Page ID</label>
+                    <input type="text" name="pageid" id="pageid" value="{{ setting.pageid }}" class="widefat" maxlength="64" />
+                </div>
+                <div class="col_1of3">
+                    <label for="appid">Facebook App ID</label>
+                    <input type="password"  name="appid" id="appid" value="{{ setting.appid }}" class="widefat" maxlength="64" />
+                </div>
+                <div class="col_1of3">
+                    <label for="secretkey">Facebook Secret Key</label>
+                    <input type="password" name="secretkey" id="secretkey" value="{{ setting.secretkey }}" class="widefat" maxlength="64" />
+                </div>
+                <div class="col_1of1 form-group">
+                    <p>Select which Facebook attachments you want displayed in the feed.</p>
+                    {{ checkboxes | raw }}
+                </div>
+            </div>
+            <input type="submit" name="Submit" value="UPDATE FACEBOOK ACCOUNT" class="button button-primary" />
+        </form>
+    </div>
+</div>

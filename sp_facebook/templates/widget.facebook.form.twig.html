@@ -1,0 +1,15 @@
+{% for lang in languages %}
+<p>
+	<label for="{{ class.get_field_id( "widget_caption_" ~ lang ) }}">Caption {% if french_enabled %}( {{ lang | upper }} ) {% endif %}</label>
+
+	<input class="widefat" id="{{ class.get_field_id( "widget_caption_" ~ lang ) }}" name="{{ class.get_field_name( "widget_caption_" ~ lang ) }}" type="text" value="{{ instance[lang].caption }}" maxlength="100" />
+</p>
+<p>
+	<label for="{{ class.get_field_id( "widget_posts_no_" ~ lang ) }}">No. of Posts to display {% if french_enabled %}( {{ lang | upper }} ) {% endif %}</label>
+	<select class="widefat" id="{{ class.get_field_id( "widget_posts_no_" ~ lang ) }}" name="{{ class.get_field_name( "widget_posts_no_" ~ lang ) }}">
+	    {% for x in 1..5 %}
+			<option value="{{ x }}" {{ x == instance[lang].posts_no ? 'selected="selected"' : null }}>{{ x }}</option>
+	    {% endfor %}
+    </select>
+</p>
+{% endfor %}

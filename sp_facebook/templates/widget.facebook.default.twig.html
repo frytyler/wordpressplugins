@@ -1,0 +1,35 @@
+{{ before | raw }}
+<header>
+	{{ before_title | raw }}
+	{{ title | raw }}
+	{{ after_title | raw }}
+</header>
+<div class="facebook-posts">
+	{% if (posts) %}
+	{% for post in posts %}
+		<article class="facebook-post">
+			<div class="excerpt">
+				{% if post.img is not empty %}
+            	<a href="{{ post.view_page_link }}">
+            		{{ post.img | raw }}
+            	</a>
+            	{% endif %}
+				<p>{{ post.message }}</p>
+				<div class="clr"></div>
+				<p class="date">{{ post.date }} ago</p>
+			</div>
+			<div class="meta clearfix">
+				<a href="{{ post.view_page_link }}" target="_blank" rel="nofollow" class="read-more">
+					{{ viewpost }}
+				</a>
+				{% if post.likes > 0 %}
+					<span class="like-count">
+						{{ post.likes }} Likes
+					</span>
+				{% endif %}
+			</div>
+		</article>
+	{% endfor %}
+	{% endif %}
+</div>
+{{ after | raw }}

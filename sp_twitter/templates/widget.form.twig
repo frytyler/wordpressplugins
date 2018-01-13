@@ -1,0 +1,18 @@
+<p>
+	<label for="{{ class.get_field_id( "widget_caption_en" ) }}">Caption <strong>(EN)</strong>:</label>
+
+	<input class="widefat" id="{{ class.get_field_id( "widget_caption_en" ) }}" name="{{ class.get_field_name( "widget_caption_en" ) }}" type="text" value="{{ instance.caption_en }}" maxlength="100" />
+</p>
+<p>
+	<label for="{{ class.get_field_id( "widget_caption_fr" ) }}">Caption <strong>(FR)</strong>:</label>
+
+	<input class="widefat" id="{{ class.get_field_id( "widget_caption_fr" ) }}" name="{{ class.get_field_name( "widget_caption_fr" ) }}" type="text" value="{{ instance.caption_fr }}" maxlength="100" />
+</p>
+<p>
+	<label for="{{ class.get_field_id( "widget_posts_no" ) }}">No. of Tweets to display</label>
+	<select class="widefat" id="{{ class.get_field_id( "widget_posts_no" ) }}" name="{{ class.get_field_name( "widget_posts_no" ) }}">
+	    {% for x in 1..5 %}
+			<option value="{{ x }}" {{ x == instance.posts_no ? 'selected="selected"' : null }}>{{ x }}</option>
+	    {% endfor %}
+    </select>
+</p>
