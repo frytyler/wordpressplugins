@@ -18,6 +18,14 @@ define( "SP_CORE_DIR", plugin_dir_path( __FILE__ ) );
 /**
  *	COMMON FUNCTIONS
  */
+
+function sp_french_enabled() { 
+	if(function_exists('pll_current_language')) {
+		return true;
+	}
+	return false;
+}
+
 function sp_translate($en=NULL,$fr=NULL) {
 	if(function_exists('pll_current_language')) {
 		if ("fr" == pll_current_language()) return $fr;
