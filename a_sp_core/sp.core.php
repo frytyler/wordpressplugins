@@ -139,7 +139,6 @@ class SP_BLOCK {
 	 *	@return 	<void>
 	 */
 	public function draw_block($title,$version=NULL,$description=NULL,$footer=NULL){
-		print_r(sp_translate('s', 'r'));
 		?>
 		<div class="wrap">
        		<div class="sp_block">
